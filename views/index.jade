@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  head
+    div#nav
+      ul
+        form(action='/', method='post')
+          input(type="text", placeholder="recherche" )
+          input(type='submit', value = 'go')
+        li: a(href="#book-a") film 
+        li: a(href="#book-a") acceuil
+        li: a(href="#book-a") connecter
+  body
+    div#Presentation
+      h1 Mon ciné/film
+      p Vous recherché un film qui vous correpond pour ce soir. 
+      p  Arretez vous!! vous etes au bonne endroit pour le trouvez selon vos critéres.
+      input(type='submit', value = 'Trouver mon film')
+      
