@@ -4,8 +4,8 @@ block content
   head
     div#nav
       ul
-        form(action='/', method='post')
-          input(type="text", placeholder="recherche" )
+        form(action='/users/', method='post')
+          input(type="text", placeholder="recherche", name= 'wanted').recherche
           input(type='submit', value = 'go')
         li: a(href="#book-a") film 
         li: a(href="#book-a") acceuil
@@ -16,4 +16,15 @@ block content
       p Vous recherché un film qui vous correpond pour ce soir. 
       p  Arretez vous!! vous etes au bonne endroit pour le trouvez selon vos critéres.
       input(type='submit', value = 'Trouver mon film')
+      ul
+        each val in test.results
+          li
+            ul  
+              each prop, i in val
+                li #{i} => #{prop}
+            
+        
+        
+          
+      
       
