@@ -5,11 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const MovieDB = require('moviedb')('82248dd3d910226b4bba6bdb2b4f5df4');
+var mongoose = require('mongoose');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var creation = require('./routes/creation');
 
 var app = express();
+
+
+mongoose.connect('mongodb://localhost/efilm');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,9 +28,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'lsqiçkdcsl :xlkdnbswguzq"t_g',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/', creation);
+
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

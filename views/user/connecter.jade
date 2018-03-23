@@ -1,0 +1,26 @@
+//- extends layout
+//- 
+//- block content
+//-   h1= title
+//-   p Welcome to #{title}
+//- 
+//-   if errors
+//-     ul
+//-       each error in errors
+//-         li= error
+//-   if !user
+//-     form(action='/creation', method='POST', class='stacked')
+//-       input(type='text', name='email', placeholder='email', required)
+//-       input(type='password', name='password', required, placeholder='password')
+//-       input(type='submit')
+//-   else
+//-     p Bonjour #{ user.email }
+//- 
+//-   p
+//-     a(href='../../created') Create
+//-   p
+//-     a(href='../../logout/') Logout
+//- 
+//-   if user
+//-     p
+//-       a(href='/protected/') Sensitive Data

@@ -1,8 +1,39 @@
 body {
+  height: 100%;
+
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(https://www.horreur.net/sites/default/files/styles/galleryformatter_slide/public/upload/unenuienenfervis1.jpg?itok=7WOXk70Z);
+  background-repeat: no-repeat;
+background-size: cover;
 }
 
 a {
   color: #00B7FF;
+}
+li {
+  padding-top: 5px;
+}
+#espace {
+  margin-top: 10px;
+}
+p {
+  color: blue;
+}
+#navi {
+  display: flex;
+
+}
+#nav > ul > li {
+  margin-left: 50px;
+  list-style: none;
+}
+#recherche {
+  margin-left: 80px;
+}
+#Presentation {
+  color: #d6d3f0;
+}
+#nav {
+  background-color: black;
 }

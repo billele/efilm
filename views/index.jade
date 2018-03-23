@@ -3,27 +3,37 @@ extends layout
 block content
   head
     div#nav
-      ul
-        form(action='/users/', method='post')
-          input(type="text", placeholder="recherche", name= 'wanted').recherche
-          input(type='submit', value = 'go')
-        li: a(href="#book-a") film 
-        li: a(href="#book-a") acceuil
-        li: a(href="#book-a") connecter
-  body
+      ul#navi
+        li: a(href="") film 
+        li: a(href="") acceuil  
+        li: a(href='../../created') Create
+        li: a(href='/users/logout/') Logout
+        form(action='/', method='post')#recherche
+          input(type="text", placeholder="recherche un film", name= 'wanted').recherche
+          input(type='submit', value = 'Trouver mon film')
+        
+      if !user
+        form(action='/creation', method='POST', class='stacked')
+          input(type='text', name='email', placeholder='email', required)
+          input(type='password', name='password', required, placeholder='password')
+          input(type='submit')
+      else
+        p Bonjour #{ user.email }
+
     div#Presentation
       h1 Mon ciné/film
       p Vous recherché un film qui vous correpond pour ce soir. 
       p  Arretez vous!! vous etes au bonne endroit pour le trouvez selon vos critéres.
-      input(type='submit', value = 'Trouver mon film')
       ul
         each val in test.results
           li
-            ul  
-              each prop, i in val
-                li #{i} => #{prop}
-            
-        
+            ul#espace  
+              li title : #{val.title}
+              li 
+                img(src='https://image.tmdb.org/t/p/w200/' + '#{val.poster_path}')
+              li resumé : #{val.overview}
+              li popularity: #{val.popularity}
+              li vote : #{val.vote_average}
         
           
       
